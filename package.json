@@ -1,0 +1,20 @@
+{
+  "name": "api-rest",
+  "version": "1.0.0",
+  "description": "mi primer api rest con mongo",
+  "main": "server.js",
+  "author": "Markoz Peña Mendez (markdrew53@gmail.com)",
+  "license": "MIT",
+  "dependencies": {
+    "bluebird": "^3.5.1",
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "mongoose": "^4.12.5"
+  },
+  "devDependencies": {
+    "nodemon": "^1.12.1"
+  },
+  "scripts": {
+    "dev": "PORT=3000 nodemon server.js"
+  }
+}
