@@ -17,7 +17,6 @@ function getSingleProduct(request, response) {
 function getProducts(request, response) {
   Product.find({}, (err, products) => {
      if (err) return response.status(500).send({ message: `Error ${err.code}: ${err.message}` })
-     if (!products) return response.status(404).send({ message: 'There is no product' })
 
      response.status(200).send({ products })
   })
