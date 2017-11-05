@@ -29,7 +29,7 @@ function saveProduct(request, response) {
 
     // Almacenando un producto en nustra base de datos
     const { name, picture, price, category, description } = request.body
-    let product = new Product({
+    const product = new Product({
        name,
        picture,
        price,
