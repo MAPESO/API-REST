@@ -38,8 +38,12 @@ function saveProduct(request, response) {
 
   // Gurgando el producto en BS
   product.save((err, productStored) => {
-      if(err) return response.status(500).send({ message: `Error ${err.code}: ${err.message}` })
-      response.status(200).send({ product: productStored, message: 'product saved :)' })
+    if(err) return response.status(500).send({ message: `Error ${err.code}: ${err.message}` })
+     
+    response.status(200).send({ 
+      product: productStored, 
+      message: 'product saved :)' 
+    });
   })
 }
 
@@ -62,7 +66,10 @@ function updateProduct (request, response) {
   Product.findByIdAndUpdate(productId, update, (err, productUpdated) => {
     if (err) response.status(500).send({message: `Error ${err.code}: ${err.message}` })
 
-    response.status(200).send({ product: productUpdated, message: 'Updated product' })
+    response.status(200).send({ 
+      product: productUpdated, 
+      message: 'Updated product' 
+    });
   })
 }
 
