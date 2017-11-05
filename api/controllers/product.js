@@ -66,6 +66,7 @@ function updateProduct (request, response) {
 
   Product.findByIdAndUpdate(productId, update, (err, productUpdated) => {
     if (err) response.status(500).send({message: `Error ${err.code}: ${err.message}` })
+    if (!productUpdated) return response.status(404).send({ message: `No existe el producto ${productId}` })
 
     response.status(200).send({ 
       product: productUpdated, 
