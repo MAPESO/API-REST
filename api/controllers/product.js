@@ -4,7 +4,8 @@
 const Product = require('../models/product')
 
 function getSingleProduct(request, response) {  
-  const productId = request.params.productId  
+  const productId = request.params.productId
+  
   Product.findById(productId, (err, product) => {
      if (err) return response.status(500).send({ message: `Error ${err.code}: ${err.message}` })
      if (!product) return response.status(404).send({ message: 'There is no product' })
