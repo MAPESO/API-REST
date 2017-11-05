@@ -3,20 +3,20 @@
 // Packages
 const mongoose = require('mongoose')
 const promise = require('bluebird')
-const config = require('./config')
+const {port, db} = require('./config')
 const app = require('./app')
 
 mongoose.Promise = promise
 
-mongoose.connect(config.db, err => {
+mongoose.connect(db, err => {
     if(err) return console.log(`Apparently a problem occurred: ${err}`)
 
     console.log('> Connection to the established database c:')
 
-    app.listen(config.port, err => {
+    app.listen(port, err => {
         if(err) return console.log(`Apparently a problem occurred: ${err}`)
         
-        console.log(`> Ready On http://localhost:${config.port}/api/product`)
+        console.log(`> Ready On http://localhost:${port}/api`)
     })
 })
 

@@ -3,8 +3,8 @@
 // Packages
 const express = require('express')
 const bodyParser = require('body-parser')
-
 const api = require('./api/routes')
+
 const app = express()
 
 app.use(bodyParser.urlencoded({ extended: false }))
