@@ -26,7 +26,7 @@ function saveProduct(request, response) {
     console.log('POST/api/product')
     console.log(request.body)
 
-    // Almacenando un producto en nustra base de datos
+    // Storing the product in our database
     const { name, picture, price, category, description } = request.body
     const product = new Product({
        name,
@@ -36,7 +36,7 @@ function saveProduct(request, response) {
        description
     })
 
-  // Gurgando el producto en BS
+  // Saving the product in the database
   product.save((err, productStored) => {
     if(err) return response.status(500).send({ message: `Error ${err.code}: ${err.message}` })
      
@@ -62,6 +62,8 @@ function deleteProduct (request, response) {
 function updateProduct (request, response) {
   const productId = request.params.productId
   const update = request.body
+  
+  console.log(request.body)
 
   Product.findByIdAndUpdate(productId, update, (err, productUpdated) => {
     if (err) return response.status(500).send({ message: `Error ${err.code}: ${err.message}` })
