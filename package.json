@@ -9,16 +9,25 @@
     "bcrypt-nodejs": "^0.0.3",
     "bluebird": "^3.5.1",
     "body-parser": "^1.18.2",
-    "crypto": "^1.0.1",
     "express": "^4.16.2",
     "jwt-simple": "^0.5.1",
     "moment": "^2.19.2",
     "mongoose": "^4.12.5"
   },
   "devDependencies": {
-    "nodemon": "^1.12.1"
+    "husky": "^0.14.3",
+    "lint-staged": "^5.0.0",
+    "nodemon": "^1.12.1",
+    "prettier": "^1.8.2"
   },
   "scripts": {
-    "dev": "PORT=3000 nodemon server.js"
+    "dev": "PORT=3000 nodemon server.js",
+    "precommit": "lint-staged"
+  },
+  "lint-staged": {
+    "*.js": [
+      "prettier --single-quote --no-semi --write",
+      "git add"
+    ]
   }
 }
