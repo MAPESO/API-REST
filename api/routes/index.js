@@ -21,7 +21,7 @@ router.get('/product', getProducts)
 
 router.get('/product/:productId', getSingleProduct)
 
-router.get('/private', isAuth, function(request, reponse) {
+router.get('/private', isAuth, (request, reponse) => {
   response.status(200).send('<h1> Tienes acceso a la ruta :) </h1>')
 })
 
