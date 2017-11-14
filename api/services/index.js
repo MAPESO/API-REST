@@ -38,8 +38,6 @@ function decodeToke(token) {
   return decode
 }
 
-let naaem = 'markoz'
-
 module.exports = {
   createToken,
   decodeToke
