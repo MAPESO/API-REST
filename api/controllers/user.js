@@ -23,7 +23,8 @@ function signUp(request, reponse) {
 }
 
 function signIn(request, response) {
-  User.find({ email: request.body.email }, (err, user) => {
+  const { email } = request.body
+  User.find({ email }, (err, user) => {
     if (err) {
       return reponse
         .status(500)
@@ -33,7 +34,10 @@ function signIn(request, response) {
       return reponse.status(404).send({ message: 'No existe el usuario ' })
     }
 
-    response.status(200).send({ message: 'Te haz logeado correctamente ' })
+    response.status(200).send({
+      message: 'Te haz logeado correctamente',
+      token: createToken(user)
+    })
   })
 }
 
