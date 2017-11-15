@@ -18,7 +18,10 @@ function signUp(request, reponse) {
         .send({ message: `Error al crear el usuario: ${err}` })
     }
 
-    reponse.status(201).send({ token: createToken(user) })
+    reponse.status(201).send({
+      message: 'Se a creado el Token correctamente :)',
+      token: createToken(user)
+    })
   })
 }
 
