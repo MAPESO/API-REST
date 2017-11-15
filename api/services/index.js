@@ -2,7 +2,7 @@
 
 const jwt = require('jwt-simple')
 const moment = require('moment')
-const { SECRET_TOKEN } = require('.../config')
+const { SECRET_TOKEN } = require('../../config')
 
 function createToken(user) {
   const payload = {

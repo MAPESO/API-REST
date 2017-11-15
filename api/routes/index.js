@@ -11,7 +11,7 @@ const {
   works
 } = require('../controllers/product')
 
-const { isAuth } = require('../middlewares/auth')
+const isAuth = require('../middlewares/auth')
 
 const router = express.Router()
 
@@ -21,14 +21,14 @@ router.get('/product', getProducts)
 
 router.get('/product/:productId', getSingleProduct)
 
-router.get('/private', isAuth, (request, reponse) => {
-  response.status(200).send('<h1> Tienes acceso a la ruta :) </h1>')
-})
-
 router.post('/product', saveProduct)
 
 router.put('/product/:productId', updateProduct)
 
 router.delete('/product/:productId', deleteProduct)
+
+router.get('/private', isAuth, (request, response) => {
+  response.status(200).send('<h1>hooola</h1>')
+})
 
 module.exports = router

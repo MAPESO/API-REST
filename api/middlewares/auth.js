@@ -2,7 +2,7 @@
 
 const { decodeToke } = require('../services')
 
-function isAuth(request, reponse, next) {
+function isAuth(request, response, next) {
   if (!request.headers.authorization) {
     return response.status(403).send({ message: 'No tienes acceso a esa ruta' })
   }
@@ -11,7 +11,7 @@ function isAuth(request, reponse, next) {
 
   decodeToke(token)
     .then(response => {
-      request.user = reponse
+      request.user = response
       next()
     })
     .catch(response => {
