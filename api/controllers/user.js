@@ -12,26 +12,32 @@ function signUp(request, reponse) {
   })
 
   mongoose.save(err => {
-    if (err)
+    if (err) {
       return reponse
         .status(500)
         .send({ message: `Error al crear el usuario: ${err}` })
+    }
 
     reponse.status(200).send({ token: createToken(user) })
   })
 }
 
 function signIn(request, response) {
-  User.find({ email: request.body.email }, (err, user) => {
-    if (err)
+  const { email } = request.body
+  User.find({ email }, (err, user) => {
+    if (err) {
       return reponse
         .status(500)
         .send({ message: `Error en el servidor: ${err}` })
+    }
     if (user === null) {
-      reponse.status(404).send({ message: 'No existe el usuario ' })
+      return reponse.status(404).send({ message: 'No existe el usuario ' })
     }
 
-    response.status(200).send({ message: 'Te haz logeado correctamente ' })
+    response.status(200).send({
+      message: 'Te haz logeado correctamente',
+      token: createToken(user)
+    })
   })
 }
 
