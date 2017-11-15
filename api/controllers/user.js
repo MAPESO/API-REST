@@ -1,24 +1,24 @@
 'use strict'
 
-const mongoose = require('mongoose')
 const User = require('../models/user')
 const { createToken } = require('../services')
 
 function signUp(request, reponse) {
-  const { email, displayName } = request.body
+  const { email, displayName, password } = request.body
   const user = new User({
     email,
-    displayName
+    displayName,
+    password
   })
 
-  mongoose.save(err => {
+  user.save(err => {
     if (err) {
       return reponse
         .status(500)
         .send({ message: `Error al crear el usuario: ${err}` })
     }
 
-    reponse.status(200).send({ token: createToken(user) })
+    reponse.status(201).send({ token: createToken(user) })
   })
 }
 
