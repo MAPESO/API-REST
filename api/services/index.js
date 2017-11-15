@@ -25,8 +25,8 @@ function decodeToke(token) {
           status: 400,
           message: 'El toke expiro'
         })
-        resolve(payload.sub)
       }
+      resolve(payload.sub)
     } catch (err) {
       reject({
         status: 500,
