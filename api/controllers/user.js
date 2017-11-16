@@ -18,7 +18,10 @@ function signUp(request, reponse) {
         .send({ message: `Error al crear el usuario: ${err}` })
     }
 
-    reponse.status(201).send({ token: createToken(user) })
+    reponse.status(201).send({
+      message: 'Se a creado el Token correctamente :)',
+      token: createToken(user)
+    })
   })
 }
 
@@ -26,12 +29,12 @@ function signIn(request, response) {
   const { email } = request.body
   User.find({ email }, (err, user) => {
     if (err) {
-      return reponse
+      return response
         .status(500)
         .send({ message: `Error en el servidor: ${err}` })
     }
     if (user === null) {
-      return reponse.status(404).send({ message: 'No existe el usuario ' })
+      return response.status(404).send({ message: 'No existe el usuario ' })
     }
 
     response.status(200).send({
