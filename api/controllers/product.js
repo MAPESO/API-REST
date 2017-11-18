@@ -96,15 +96,10 @@ function updateProduct(request, response) {
   })
 }
 
-function works(request, response) {
-  response.status(200).send('<h1>Works !!!</h1>')
-}
-
 module.exports = {
   saveProduct,
   getSingleProduct,
   getProducts,
   deleteProduct,
-  updateProduct,
-  works
+  updateProduct
 }
