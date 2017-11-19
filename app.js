@@ -24,4 +24,8 @@ app.get('/login', (request, response) => {
   response.render('login')
 })
 
+app.get('/', (request, response) => {
+  response.render('product')
+})
+
 module.exports = app

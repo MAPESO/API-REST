@@ -31,5 +31,8 @@
       "prettier --single-quote --no-semi --write",
       "git add"
     ]
+  },
+  "now": {
+    "alias": "api-rest.im"
   }
 }
