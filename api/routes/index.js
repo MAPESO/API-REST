@@ -7,8 +7,7 @@ const {
   getSingleProduct,
   saveProduct,
   updateProduct,
-  deleteProduct,
-  works
+  deleteProduct
 } = require('../controllers/product')
 
 const { signUp, signIn } = require('../controllers/user')
@@ -17,17 +16,15 @@ const isAuth = require('../middlewares/auth')
 
 const router = express.Router()
 
-router.get('/', works)
-
 router.get('/product', getProducts)
 
-router.get('/product/:productId', getSingleProduct)
+router.get('/product/:productId', isAuth, getSingleProduct)
 
-router.post('/product', saveProduct)
+router.post('/product', isAuth, saveProduct)
 
-router.put('/product/:productId', updateProduct)
+router.put('/product/:productId', isAuth, updateProduct)
 
-router.delete('/product/:productId', deleteProduct)
+router.delete('/product/:productId', isAuth, deleteProduct)
 
 router.post('/signUp', signUp)
 
